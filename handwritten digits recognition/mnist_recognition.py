@@ -1,13 +1,19 @@
 from NN import  NN
-from mnist import mnist
+from dataset.mnist import mnist
 import numpy as np
 if __name__ == "__main__":
+    # load the data
     train_images, train_labels = mnist.load_train()
     test_images, test_labels = mnist.load_test()
 
+    # crate nn model
     nn = NN.NeuralNetwork([784,100,10],'sig')
+    # init
     nn.init('normal')
-    nn.fit(train_images,train_labels,epochs=10000,lr=0.1,loss='mae')
+    # fit
+    nn.fit(train_images,train_labels,epochs=5000,lr=0.1,loss='mae',batch=1)
+
+    # predict
     right = 0
     all = 0
     for i in zip(test_images,test_labels):
