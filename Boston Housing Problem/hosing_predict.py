@@ -11,7 +11,8 @@ if __name__ == "__main__":
     train_Y = Y[:-50]
 
     nn = NN.NeuralNetwork([13,10,1],'ReLu')
-    nn.fit(train_X,train_Y,epochs=500000,lr= 0.001)
+    nn.init('normal')
+    nn.fit(train_X,train_Y,epochs=30000,lr= 0.0001,normalization=False)
     right = 0
     all = 0
     for i in zip(test_X,test_Y):

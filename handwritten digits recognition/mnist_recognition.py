@@ -5,8 +5,9 @@ if __name__ == "__main__":
     train_images, train_labels = mnist.load_train()
     test_images, test_labels = mnist.load_test()
 
-    nn = NN.NeuralNetwork([784,300,10],'sig')
-    nn.fit(train_images,train_labels,epochs=30000)
+    nn = NN.NeuralNetwork([784,100,10],'sig')
+    nn.init('normal')
+    nn.fit(train_images,train_labels,epochs=10000,lr=0.1,loss='mae')
     right = 0
     all = 0
     for i in zip(test_images,test_labels):
